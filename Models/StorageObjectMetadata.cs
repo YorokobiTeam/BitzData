@@ -7,18 +7,23 @@ namespace BitzData.Models
 
     class StorageObjectMetadata
     {
+        [JsonPropertyName("e_updated_at")]
         public int UpdatedAt { get; set; }
-        public string MD5 { get; set; }
-        public StorageObjectType Type { get; set; }
-        public string Id { get; set; }
-        public int CreatedAt { get; set; }
-    }
 
-    enum StorageObjectType
-    {
-        Audio,
-        Map,
-        Image,
-        Other
+        [JsonPropertyName("md5")]
+        public string MD5 { get; set; }
+
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [JsonPropertyName("id")]
+        public string Id { get; set; }
+
+        [JsonPropertyName("e_created_at")]
+        public int CreatedAt { get; set; }
+
+        [JsonPropertyName("relative_dir")]
+        public string RelativeDirectory { get; set; }
+
     }
 }

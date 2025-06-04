@@ -1,16 +1,10 @@
 ﻿using BitzData.Providers;
 using Supabase;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace BitzData.Services
 {
-    public abstract class GenericSupabaseService
+    public  interface GenericSupabaseService
     {
-        internal static Client supabase { get; private set; }
+        public static Client supabase { get; private set; }
         static GenericSupabaseService()
         {
             // Static constructor to ensure the service is initialized once

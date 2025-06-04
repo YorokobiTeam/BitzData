@@ -10,13 +10,13 @@ namespace BitzData.Contracts
         /// </summary>
         /// <param name="objectId">Duh?</param>
         /// <returns>The hydrated storage object</returns>
-        internal StorageObject? GetStorageObject(string objectId);
+        public Task<StorageObject?> GetStorageObject(string objectId, string? bucket, IProgress<float>? progressCb);
 
         /// <summary>
         /// This function deletes the storage object and invalidates the cache.
         /// </summary>
         /// <param name="objectId"></param>
-        internal void DeleteFromStorage(string objectId);
+        void DeleteStorageObject(StorageObject objectId);
 
         /// <summary>
         /// Helper function to get the complete path on Supabase storage.

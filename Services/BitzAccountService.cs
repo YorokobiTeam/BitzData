@@ -6,7 +6,7 @@ using static Supabase.Gotrue.Constants;
 namespace BitzData.Services
 {
     /// <summary>
-    /// This class is a singleton service for managing account-related operations in the Bitz game.
+    /// This class is a singleton service for managing account-related operations in Bitz.
     /// </summary>
     public class BitzAccountService : GenericSupabaseService
     {
@@ -20,11 +20,6 @@ namespace BitzData.Services
         }
         private static void InitializeAsync()
         {
-            supabase = SupabaseProvider.GetInstance();
-            if (supabase is null)
-            {
-                throw new Exception("SupabaseProvider was not initialized properly.");
-            }
             supabase.Auth.AddStateChangedListener((auth, state) =>
             {
                 switch (state)
