@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BitzData.Services
 {
-    internal abstract class GenericSupabaseService
+    public abstract class GenericSupabaseService
     {
         internal static Client supabase { get; private set; }
         static GenericSupabaseService()

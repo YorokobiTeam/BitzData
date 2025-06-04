@@ -8,6 +8,6 @@ namespace BitzData
 {
     public class Constants
     {
-        public static string APPLICATION_DATA = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        public static readonly string APPLICATION_DATA = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
     }
 }

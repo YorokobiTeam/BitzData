@@ -1,17 +1,24 @@
 ﻿
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BitzData.Models
 {
 
     class StorageObjectMetadata
     {
-        public DateTime lastModified;
-        public string MD5
-        {
-            get; private set;
-        }
+        public int UpdatedAt { get; set; }
+        public string MD5 { get; set; }
+        public StorageObjectType Type { get; set; }
+        public string Id { get; set; }
+        public int CreatedAt { get; set; }
+    }
 
-        public byte
+    enum StorageObjectType
+    {
+        Audio,
+        Map,
+        Image,
+        Other
     }
 }

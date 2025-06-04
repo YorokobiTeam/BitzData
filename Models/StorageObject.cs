@@ -40,8 +40,8 @@ namespace BitzData.Models
             if (objectId is null || objectId is "")
                 throw new InvalidDataException("Empty object id is not permitted.");
 
-            ActualPath = BitzFileService.GetActualPath(objectId);
             ObjectId = objectId;
+            ActualPath = BitzFileService.GetInstance().GetActualPath(objectId) ?? throw new Exception("File not found on remote server.");
         }
 
     }
