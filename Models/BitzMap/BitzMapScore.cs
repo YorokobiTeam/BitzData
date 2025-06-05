@@ -1,6 +1,6 @@
 ﻿using Supabase.Postgrest.Attributes;
 
-namespace BitzData.Models
+namespace BitzData.Models.BitzMap
 {
     [Table("player_map_score")]
     class BitzMapScore

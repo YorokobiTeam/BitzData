@@ -1,7 +1,5 @@
 ﻿
-using BitzData.Providers;
-using Supabase;
-using static Supabase.Gotrue.Constants;
+using Supabase.Gotrue;
 
 namespace BitzData.Services
 {
@@ -11,37 +9,31 @@ namespace BitzData.Services
     public class BitzAccountService : GenericSupabaseService
     {
         private static BitzAccountService instance;
-        private static Client supabase;
+
+
 
         private BitzAccountService() { }
+
         static BitzAccountService()
         {
-            InitializeAsync();
-        }
-        private static void InitializeAsync()
-        {
-            supabase.Auth.AddStateChangedListener((auth, state) =>
-            {
-                switch (state)
-                {
-                    case AuthState.SignedIn:
-                        if (auth is not null)
-                        {
-                        }
-                        break;
-                };
-            });
-        }
-
-        public static BitzAccountService GetInstance()
-        {
             instance ??= new BitzAccountService();
-            return instance;
+            Initialize();
+        }
+        private static void Initialize()
+        {
+
         }
 
-        public static void RegisterAuthEventCallback(Supabase.Gotrue.Interfaces.IGotrueClient<Supabase.Gotrue.User, Supabase.Gotrue.Session>.AuthEventHandler eventHandler)
-        {
-            supabase.Auth.AddStateChangedListener(eventHandler);
-        }
+        public async Task<Session?> Login(string email, string password) => await supabase.Auth.SignInWithPassword(email, password);
+
+        public async Task Logout() => await supabase.Auth.SignOut();
+
+        public static BitzAccountService GetInstance() => instance;
+
+
+        /// <summary>
+        /// </summary>
+        /// <param name="eventHandler"></param>
+        public void RegisterAuthEventCallback(Supabase.Gotrue.Interfaces.IGotrueClient<Supabase.Gotrue.User, Supabase.Gotrue.Session>.AuthEventHandler eventHandler) => supabase.Auth.AddStateChangedListener(eventHandler);
     }
 }

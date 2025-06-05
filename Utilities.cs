@@ -14,5 +14,11 @@ namespace BitzData
             if (strings.Length <= 2) return "";
             return strings.Last<string>();
         }
+
+        public static string ExtractFileNameFromSupabasePath(string filePath)
+        {
+            string[] strings = filePath.Split("/");
+            return strings.Last<string>();
+        }
     }
 }

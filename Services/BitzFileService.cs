@@ -22,7 +22,7 @@ namespace BitzData.Services
             return Instance!;
         }
 
-        private static void Initialize() => Instance = new BitzFileService();
+        private static void Initialize() => Instance ??= new BitzFileService();
 
 
         // You can't instantiate this.
@@ -111,10 +111,10 @@ namespace BitzData.Services
 
                 // Writes the metadata to disk
                 var metadataPath = Path.Combine(Constants.CACHE_METADATA, @object.ObjectId + ".bmeta");
-                var serverMetadataJson = supabase.Rpc("get_object_metadata", new Dictionary<string, string>
+                var serverMetadataJson = (await supabase.Rpc("get_object_metadata", new Dictionary<string, string>
                 {
                     {"object_id", @object.ObjectId }
-                }).Result.Content ?? throw new Exception("Couldn't retrieve information about object on server.");
+                })).Content ?? throw new Exception("Couldn't retrieve information about object on server.");
 
                 var serverMetadata = (JsonSerializer.Deserialize<StorageObjectMetadata>(serverMetadataJson)) ?? throw new Exception("Server responded with invalid data");
                 serverMetadata.RelativeDirectory = relativeDir;
@@ -155,12 +155,11 @@ namespace BitzData.Services
         {
             StorageObject? fromCache = await TryFromCache(objectId);
             if (fromCache is not null) return fromCache;
-
             try
             {
                 var @object = new StorageObject(objectId)
                 {
-                    Bucket = bucket ?? "bitz-files"
+                    Bucket = bucket
                 };
                 await DownloadObject(@object, relativeDir, progressCb);
                 return @object;
@@ -172,7 +171,7 @@ namespace BitzData.Services
             }
         }
 
-        public void DeleteStorageObject(StorageObject @object)
+        public void DeleteLocalStorageObject(StorageObject @object)
         {
             File.Delete(Path.Combine(Constants.CACHE_METADATA, $"{@object.ObjectId}.bmeta"));
             File.Delete(Path.Combine(Constants.CACHE_FILES, $"{@object.ObjectId}.{Utilities.GetExtension(@object.ActualPath)}"));

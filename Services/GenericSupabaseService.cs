@@ -2,7 +2,7 @@
 using Supabase;
 namespace BitzData.Services
 {
-    public  interface GenericSupabaseService
+    public abstract class GenericSupabaseService
     {
         public static Client supabase { get; private set; }
         static GenericSupabaseService()

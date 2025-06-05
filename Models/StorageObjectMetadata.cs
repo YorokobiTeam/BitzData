@@ -25,5 +25,7 @@ namespace BitzData.Models
         [JsonPropertyName("relative_dir")]
         public string RelativeDirectory { get; set; }
 
+
+
     }
 }
