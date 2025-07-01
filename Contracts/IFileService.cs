@@ -23,7 +23,8 @@ namespace BitzData.Contracts
         /// </summary>
         /// <param name="objectId"></param>
         /// <returns></returns>
-        public string? GetActualPath(string objectId);
+        public string? 
+            Path(string objectId);
 
         /// <summary>
         /// Attempts to hydrate the given StorageObject

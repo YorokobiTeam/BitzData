@@ -14,28 +14,21 @@ namespace BitzData.Providers
             // Static constructor to ensure the provider is initialized once
             InitializeAsync();
         }
-        public async static void InitializeAsync()
+        public static void InitializeAsync()
         {
-            // Get the Supabase URL and Key from the web server
-            HttpClient hc = new()
-            {
-                BaseAddress = new Uri("http://api.maik.io.vn")
-            };
-            var response = await hc.GetFromJsonAsync<APIKeys>("/keys/bitz");
-            if (response == null || response.SupabaseKey == null || response.SupabaseUrl == null)
-            {
-                throw new Exception("Failed to retrieve Supabase API keys from the server.");
-            }
-
             var options = new Supabase.SupabaseOptions
             {
                 AutoConnectRealtime = true,
                 AutoRefreshToken = true,
             };
-            supabase = new Supabase.Client(response.SupabaseUrl, response.SupabaseKey, options);
+            supabase = new Supabase.Client(
+                Constants.SUPABASE_URL,
+                Constants.SUPABASE_ANON_KEY,
+                options);
         }
 
-        public static Client GetInstance() { 
+        public static Client GetInstance()
+        {
             return supabase ?? throw new InvalidOperationException("SupabaseProvider has not been initialized.");
         }
 

@@ -10,6 +10,10 @@ namespace BitzData.Services
             // Static constructor to ensure the service is initialized once
             InitializeAsync();
         }
+        public GenericSupabaseService()
+        {
+
+        }
         private static void InitializeAsync()
         {
             supabase = SupabaseProvider.GetInstance();

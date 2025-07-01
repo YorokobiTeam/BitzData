@@ -4,26 +4,28 @@ using System.Text.Json.Serialization;
 
 namespace BitzData.Models
 {
-
-    class StorageObjectMetadata
+    /// <summary>
+    /// This object holds metadata that should be synced between client and DB.
+    /// </summary>
+    public class StorageObjectMetadata
     {
         [JsonPropertyName("e_updated_at")]
-        public int UpdatedAt { get; set; }
+        public float UpdatedAt { get; set; }
 
         [JsonPropertyName("md5")]
         public string MD5 { get; set; }
 
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string ServerFilePath { get; set; }
 
         [JsonPropertyName("id")]
         public string Id { get; set; }
 
         [JsonPropertyName("e_created_at")]
-        public int CreatedAt { get; set; }
+        public float CreatedAt { get; set; }
 
         [JsonPropertyName("relative_dir")]
-        public string RelativeDirectory { get; set; }
+        public string RelativeLocalDirectory { get; set; }
 
 
 

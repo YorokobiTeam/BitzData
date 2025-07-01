@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="BitzData.Tests\**" />
+    <EmbeddedResource Remove="BitzData.Tests\**" />
+    <None Remove="BitzData.Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="supabase" Version="1.1.1" />
   </ItemGroup>
 

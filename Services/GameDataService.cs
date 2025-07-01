@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace BitzData.Services
 {
-    internal class GameDataService : GenericSupabaseService, IGameDataService
+    public class GameDataService : GenericSupabaseService, IGameDataService
     {
+        public GameDataService()
+        {
+
+        }
     }
 }

@@ -13,10 +13,12 @@ namespace BitzData.Models
             get; private set;
         }
 
-        public string ActualPath { get; set; }
-
+        // The storage object might not be hydrated.
         [AllowNull]
         public string localPath = null;
+
+        [NotNull]
+        public StorageObjectMetadata Metadata { get; set; }
 
         public string LocalPath
         {
@@ -41,7 +43,8 @@ namespace BitzData.Models
                 throw new InvalidDataException("Empty object id is not permitted.");
 
             ObjectId = objectId;
-            ActualPath = BitzFileService.GetInstance().GetActualPath(objectId) ?? throw new Exception("File not found on remote server.");
+            Metadata = BitzFileService.GetInstance().GetObjectMetadata(objectId) ?? throw new Exception("File not found on remote server.");
+
         }
 
     }
