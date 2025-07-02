@@ -1,26 +1,27 @@
 ﻿using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
 using System.Text.Json.Serialization;
 
 
 namespace BitzData.Models.BitzMap
 {
     [Table("map")]
-    class BitzMap
+    public class BitzMap : BaseModel
     {
         [PrimaryKey("map_id"), JsonPropertyName("map_id")]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
-        [PrimaryKey("music_file_id"), JsonPropertyName("music_file_id")]
-        public string MusicFileId { get; set; }
+        [Column("music_file_id"), JsonPropertyName("music_file_id")]
+        public Guid MusicFileId { get; set; }
 
-        [PrimaryKey("background_file_id"), JsonPropertyName("background_file_id")]
-        public string BackgroundFileId { get; set; }
+        [Column("background_file_id"), JsonPropertyName("background_file_id")]
+        public Guid BackgroundFileId { get; set; }
 
         [Column("cover_file_id"), JsonPropertyName("cover_file_id")]
-        public string CoverFileId { get; set; }
+        public Guid CoverFileId { get; set; }
 
         [Column("map_author_id"), JsonPropertyName("map_author_id")]
-        public string MapAuthorId { get; set; }
+        public Guid MapAuthorId { get; set; }
 
         [Column("song_name"), JsonPropertyName("song_name")]
         public string SongName { get; set; }
