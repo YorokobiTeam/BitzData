@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35521.163 d17.12
+VisualStudioVersion = 17.12.35521.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitzData", "BitzData.csproj", "{31A7D61C-100B-4ACE-B883-5DF9766F1267}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitzData.Tests", "BitzData.Tests\BitzData.Tests.csproj", "{EC21A46A-B519-40B6-8B68-60D5ED5F51C9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{31A7D61C-100B-4ACE-B883-5DF9766F1267} = {31A7D61C-100B-4ACE-B883-5DF9766F1267}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +20,15 @@ Global
 		{31A7D61C-100B-4ACE-B883-5DF9766F1267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31A7D61C-100B-4ACE-B883-5DF9766F1267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31A7D61C-100B-4ACE-B883-5DF9766F1267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC21A46A-B519-40B6-8B68-60D5ED5F51C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC21A46A-B519-40B6-8B68-60D5ED5F51C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC21A46A-B519-40B6-8B68-60D5ED5F51C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC21A46A-B519-40B6-8B68-60D5ED5F51C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0B8400F-A473-4CE9-BF15-56F53EDE4A25}
 	EndGlobalSection
 EndGlobal
